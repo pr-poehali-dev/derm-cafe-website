@@ -14,42 +14,48 @@ export default function MediaHub() {
       title: 'Understanding Basal Cell Carcinoma',
       description: 'A comprehensive discussion on the most common form of skin cancer, its treatment options, and prevention strategies.',
       duration: '45 min',
-      topic: 'skin-cancer'
+      topic: 'skin-cancer',
+      image: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/c2d7e0d6-2493-476e-a761-89c3af682620.jpg'
     },
     {
       type: 'video',
       title: 'Mohs Surgery Explained',
       description: 'Visual guide to the Mohs micrographic surgery technique and what patients can expect during the procedure.',
       duration: '12 min',
-      topic: 'skin-cancer'
+      topic: 'skin-cancer',
+      image: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/c00dfc28-bd50-4b5b-be69-7838ff4c3f69.jpg'
     },
     {
       type: 'podcast',
       title: 'Cosmetic Procedures: What Really Works',
       description: 'Evidence-based review of popular cosmetic dermatology treatments and their actual effectiveness.',
       duration: '38 min',
-      topic: 'cosmetic'
+      topic: 'cosmetic',
+      image: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/c2d7e0d6-2493-476e-a761-89c3af682620.jpg'
     },
     {
       type: 'article',
       title: 'Sun Protection: Beyond the Basics',
       description: 'Advanced strategies for protecting your skin from UV damage and preventing skin cancer.',
       duration: '8 min read',
-      topic: 'education'
+      topic: 'education',
+      image: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/0e49861d-bd8a-49bf-9f70-e8335131de3b.jpg'
     },
     {
       type: 'video',
       title: 'Before & After: Surgical Reconstruction',
       description: 'Patient cases demonstrating reconstruction outcomes following Mohs surgery.',
       duration: '15 min',
-      topic: 'skin-cancer'
+      topic: 'skin-cancer',
+      image: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/c00dfc28-bd50-4b5b-be69-7838ff4c3f69.jpg'
     },
     {
       type: 'article',
       title: 'The Science of Skin Aging',
       description: 'Understanding the biological processes behind skin aging and evidence-based anti-aging approaches.',
       duration: '10 min read',
-      topic: 'education'
+      topic: 'education',
+      image: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/0e49861d-bd8a-49bf-9f70-e8335131de3b.jpg'
     }
   ];
 
@@ -92,7 +98,14 @@ export default function MediaHub() {
           <TabsContent value="all" className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {mediaItems.map((item, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
+                <Card key={index} className="hover:shadow-lg transition-all hover:-translate-y-1 overflow-hidden">
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
                   <CardHeader>
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">
@@ -120,7 +133,14 @@ export default function MediaHub() {
           <TabsContent value="podcast" className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {mediaItems.filter(item => item.type === 'podcast').map((item, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
+                <Card key={index} className="hover:shadow-lg transition-all hover:-translate-y-1 overflow-hidden">
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
                   <CardHeader>
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">
@@ -146,7 +166,14 @@ export default function MediaHub() {
           <TabsContent value="video" className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {mediaItems.filter(item => item.type === 'video').map((item, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
+                <Card key={index} className="hover:shadow-lg transition-all hover:-translate-y-1 overflow-hidden">
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
                   <CardHeader>
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">
@@ -172,7 +199,14 @@ export default function MediaHub() {
           <TabsContent value="article" className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {mediaItems.filter(item => item.type === 'article').map((item, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
+                <Card key={index} className="hover:shadow-lg transition-all hover:-translate-y-1 overflow-hidden">
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
                   <CardHeader>
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">

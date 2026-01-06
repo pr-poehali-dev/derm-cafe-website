@@ -12,19 +12,22 @@ export default function FeaturedTopics({ onNavigate }: FeaturedTopicsProps) {
       icon: 'Shield',
       title: 'Skin Cancer',
       description: 'Comprehensive resources on skin cancer prevention, diagnosis, and treatment including Mohs surgery.',
-      action: () => onNavigate('expertise')
+      action: () => onNavigate('expertise'),
+      color: 'from-red-50 to-red-100'
     },
     {
       icon: 'Sparkles',
       title: 'Cosmetic Dermatology',
       description: 'Expert insights on aesthetic procedures and surgical techniques for skin rejuvenation.',
-      action: () => onNavigate('expertise')
+      action: () => onNavigate('expertise'),
+      color: 'from-purple-50 to-purple-100'
     },
     {
       icon: 'BookOpen',
       title: 'Educational Content',
       description: 'Podcasts, videos, and articles covering the latest in dermatology practice and research.',
-      action: () => onNavigate('media')
+      action: () => onNavigate('media'),
+      color: 'from-blue-50 to-blue-100'
     }
   ];
 
@@ -40,9 +43,9 @@ export default function FeaturedTopics({ onNavigate }: FeaturedTopicsProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {topics.map((topic, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
+            <Card key={index} className={`hover:shadow-lg transition-all hover:-translate-y-1 bg-gradient-to-br ${topic.color}`}>
               <CardHeader>
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-4 shadow-sm">
                   <Icon name={topic.icon as any} size={24} className="text-primary" />
                 </div>
                 <CardTitle>{topic.title}</CardTitle>
@@ -51,7 +54,7 @@ export default function FeaturedTopics({ onNavigate }: FeaturedTopicsProps) {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button variant="ghost" onClick={topic.action} className="gap-2">
+                <Button variant="ghost" onClick={topic.action} className="gap-2 hover:bg-white/50">
                   Learn More
                   <Icon name="ArrowRight" size={16} />
                 </Button>

@@ -3,14 +3,27 @@ export default function About() {
     <section className="py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-medium mb-8">About Dr. David Harvey</h2>
+          <div className="grid md:grid-cols-5 gap-8 mb-12">
+            <div className="md:col-span-2">
+              <div className="aspect-square rounded-lg overflow-hidden shadow-lg">
+                <img 
+                  src="https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/c00dfc28-bd50-4b5b-be69-7838ff4c3f69.jpg"
+                  alt="Dr. David Harvey"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            <div className="md:col-span-3">
+              <h2 className="text-3xl font-medium mb-4">About Dr. David Harvey</h2>
+              <div className="bg-muted/30 p-6 rounded-lg">
+                <p className="text-muted-foreground italic mb-0">
+                  Content from existing page: Professional biography, credentials, clinical focus, and media activity
+                </p>
+              </div>
+            </div>
+          </div>
           
           <div className="prose prose-lg max-w-none serif-text">
-            <div className="bg-muted/30 p-8 rounded-lg mb-8">
-              <p className="text-muted-foreground italic mb-0">
-                Content from existing page: Professional biography, credentials, clinical focus, and media activity
-              </p>
-            </div>
 
             <div className="space-y-6">
               <div>
