@@ -2,7 +2,13 @@ import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Hero from '@/components/sections/Hero';
-import FeaturedTopics from '@/components/sections/FeaturedTopics';
+import WhatIsDermCafe from '@/components/sections/WhatIsDermCafe';
+import FeaturedMedia from '@/components/sections/FeaturedMedia';
+import KeyTopics from '@/components/sections/KeyTopics';
+import AboutDoctor from '@/components/sections/AboutDoctor';
+import EducationFirst from '@/components/sections/EducationFirst';
+import AskEngage from '@/components/sections/AskEngage';
+import FinalCTA from '@/components/sections/FinalCTA';
 import About from '@/components/sections/About';
 import MediaHub from '@/components/sections/MediaHub';
 import Expertise from '@/components/sections/Expertise';
@@ -22,7 +28,13 @@ export default function Index() {
         return (
           <>
             <Hero onNavigate={setCurrentSection} />
-            <FeaturedTopics onNavigate={setCurrentSection} />
+            <WhatIsDermCafe />
+            <FeaturedMedia onNavigate={setCurrentSection} />
+            <KeyTopics onNavigate={setCurrentSection} />
+            <AboutDoctor onNavigate={setCurrentSection} />
+            <EducationFirst />
+            <AskEngage onNavigate={setCurrentSection} />
+            <FinalCTA onNavigate={setCurrentSection} />
           </>
         );
       case 'about':
@@ -39,7 +51,13 @@ export default function Index() {
         return (
           <>
             <Hero onNavigate={setCurrentSection} />
-            <FeaturedTopics onNavigate={setCurrentSection} />
+            <WhatIsDermCafe />
+            <FeaturedMedia onNavigate={setCurrentSection} />
+            <KeyTopics onNavigate={setCurrentSection} />
+            <AboutDoctor onNavigate={setCurrentSection} />
+            <EducationFirst />
+            <AskEngage onNavigate={setCurrentSection} />
+            <FinalCTA onNavigate={setCurrentSection} />
           </>
         );
     }
@@ -51,7 +69,7 @@ export default function Index() {
       <main className="flex-1">
         {renderSection()}
       </main>
-      <Footer />
+      <Footer onNavigate={setCurrentSection} />
     </div>
   );
 }

@@ -7,25 +7,19 @@ interface HeroProps {
 
 export default function Hero({ onNavigate }: HeroProps) {
   return (
-    <section className="relative py-20 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/0e49861d-bd8a-49bf-9f70-e8335131de3b.jpg"
-          alt=""
-          className="w-full h-full object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-white"></div>
-      </div>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium mb-6 text-foreground">
-            Welcome to The Derm Cafe
+    <section className="relative py-32 lg:py-40 overflow-hidden bg-gradient-to-b from-background to-muted/20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight text-foreground">
+            The Derm Cafe
           </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground mb-8 serif-text">
-            A curated platform for dermatology education, clinical expertise, and professional insights. 
-            Explore podcasts, videos, and clinical content designed for both patients and professionals.
+          <p className="text-xl sm:text-2xl text-foreground/80 font-light">
+            Dermatology conversations, education, and clinical insight — led by Dr. David Harvey.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto serif-text">
+            The Derm Cafe is a dermatology-focused media platform featuring podcasts, videos, and educational content, alongside the clinical expertise of board-certified dermatologist Dr. David Harvey.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button 
               size="lg" 
               onClick={() => onNavigate('media')}
@@ -40,7 +34,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               onClick={() => onNavigate('expertise')}
               className="gap-2"
             >
-              Clinical Expertise
+              View Clinical Expertise
               <Icon name="Stethoscope" size={20} />
             </Button>
           </div>
