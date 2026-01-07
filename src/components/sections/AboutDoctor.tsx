@@ -7,39 +7,43 @@ interface AboutDoctorProps {
 
 export default function AboutDoctor({ onNavigate }: AboutDoctorProps) {
   return (
-    <section className="py-20 lg:py-28 bg-muted/30">
+    <section className="py-20 lg:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <img 
-                src="https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/e1dea7e5-3cce-4e41-8d64-4fc4c4f4d2f6.jpg"
-                alt="Dr. David Harvey"
-                className="rounded-lg shadow-xl w-full"
-              />
-            </div>
-            
-            <div className="order-1 lg:order-2 space-y-6">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-foreground">
-                Meet Dr. David Harvey
-              </h2>
-              <div className="space-y-4 text-base sm:text-lg text-muted-foreground serif-text leading-relaxed">
-                <p>
-                  Dr. David Harvey is a board-certified dermatologist with extensive experience in medical, surgical, and cosmetic dermatology. His clinical focus includes skin cancer treatment, Mohs surgery, and reconstruction.
-                </p>
-                <p>
-                  Through The Derm Cafe, Dr. Harvey combines clinical practice with education, offering transparent insight into dermatology for both patients and professionals.
-                </p>
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-muted/30 rounded-3xl border border-border/50 overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+              <div className="relative aspect-square lg:aspect-auto">
+                <img 
+                  src="https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/06ccf374-27c5-4320-821d-9d5995210d94.jpg"
+                  alt="Dr. David Harvey"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <Button 
-                size="lg"
-                variant="outline"
-                onClick={() => onNavigate('about')}
-                className="gap-2"
-              >
-                About Dr. Harvey
-                <Icon name="ArrowRight" size={20} />
-              </Button>
+              
+              <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center space-y-6">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light">
+                  About Dr. David Harvey
+                </h2>
+                <div className="prose prose-lg space-y-4">
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    The Derm Café is hosted by Dr. David Harvey, a board-certified dermatologist with experience in medical, surgical, and cosmetic dermatology. His clinical focus includes skin cancer treatment, Mohs surgery, and reconstruction.
+                  </p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Through this platform, Dr. Harvey combines clinical practice with education, offering insight into dermatology through real-world experience and expert discussion.
+                  </p>
+                </div>
+                <div>
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    onClick={() => onNavigate('about')}
+                    className="gap-2"
+                  >
+                    About Dr. Harvey
+                    <Icon name="ArrowRight" size={20} />
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

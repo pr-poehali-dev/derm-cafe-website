@@ -9,6 +9,7 @@ import AboutDoctor from '@/components/sections/AboutDoctor';
 import EducationFirst from '@/components/sections/EducationFirst';
 import AskEngage from '@/components/sections/AskEngage';
 import FinalCTA from '@/components/sections/FinalCTA';
+import Disclaimer from '@/components/sections/Disclaimer';
 import About from '@/components/sections/About';
 import MediaHub from '@/components/sections/MediaHub';
 import Expertise from '@/components/sections/Expertise';
@@ -56,6 +57,7 @@ export default function Index() {
             <KeyTopics onNavigate={setCurrentSection} />
             <AboutDoctor onNavigate={setCurrentSection} />
             <EducationFirst />
+            <Disclaimer />
             <AskEngage onNavigate={setCurrentSection} />
             <FinalCTA onNavigate={setCurrentSection} />
           </>

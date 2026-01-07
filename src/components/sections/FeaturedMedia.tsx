@@ -9,67 +9,70 @@ interface FeaturedMediaProps {
 
 const featuredItems = [
   {
-    title: "Understanding Skin Cancer Detection",
+    title: "Winter Skin Care & Itch Management",
     type: "Podcast",
-    description: "Early detection strategies and common warning signs.",
-    image: "https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/77d7c8f7-cae4-4c60-a00e-cc4a12eddbde.jpg",
-    duration: "45 min"
+    description: "Understanding and treating common winter skin conditions.",
+    image: "https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/ea433978-e042-4760-ba0c-c26ff636d2a8.jpg",
+    duration: "42 min"
   },
   {
-    title: "Mohs Surgery Explained",
+    title: "Modern Anti-Aging Procedures",
     type: "Video",
-    description: "A comprehensive overview of the Mohs surgical technique.",
-    image: "https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/b6d8b8fb-a3b7-4801-bcb0-b99a8ad14ad9.jpg",
-    duration: "22 min"
+    description: "Educational overview of contemporary anti-aging treatments.",
+    image: "https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/41c136bd-bdbc-4470-9b44-c2d7d98bddf6.jpg",
+    duration: "28 min"
   },
   {
-    title: "Cosmetic Procedures in Dermatology",
+    title: "Skin Cancer Detection Insights",
     type: "Podcast",
-    description: "Medical perspective on cosmetic dermatology techniques.",
-    image: "https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/4e764ee3-c35c-408c-84db-adf8cba06e12.jpg",
-    duration: "38 min"
+    description: "Expert discussion on early detection and prevention.",
+    image: "https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/194ff998-1668-425b-82fa-580dcadcf409.jpg",
+    duration: "45 min"
   }
 ];
 
 export default function FeaturedMedia({ onNavigate }: FeaturedMediaProps) {
   return (
-    <section className="py-20 lg:py-28 bg-muted/30">
+    <section className="py-20 lg:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12 space-y-4">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-foreground">
-              Featured Conversations & Videos
+        <div className="max-w-6xl mx-auto space-y-8">
+          <div className="space-y-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light">
+              Featured Podcasts & Videos
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground serif-text max-w-3xl mx-auto">
-              Explore recent podcasts and videos covering skin health, dermatology, cosmetic procedures, and skin cancer education.
+            <p className="text-lg text-muted-foreground max-w-3xl">
+              Listen to recent conversations and watch educational videos covering dermatology, skin health, cosmetic procedures, and skin cancer education.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredItems.map((item, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all hover:-translate-y-1 overflow-hidden">
+              <div 
+                key={index} 
+                className="group rounded-2xl overflow-hidden bg-card border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
                 <div className="aspect-video overflow-hidden">
                   <img 
                     src={item.image} 
                     alt={item.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
+                <div className="p-6 space-y-3">
+                  <div className="flex items-center justify-between">
                     <Badge variant="outline" className="font-normal">
                       {item.type}
                     </Badge>
                     <span className="text-sm text-muted-foreground">{item.duration}</span>
                   </div>
-                  <CardTitle className="text-xl">{item.title}</CardTitle>
-                  <CardDescription className="serif-text">{item.description}</CardDescription>
-                </CardHeader>
-              </Card>
+                  <h3 className="text-xl font-medium">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </div>
+              </div>
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="text-center pt-4">
             <Button 
               size="lg" 
               variant="outline"
