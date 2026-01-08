@@ -8,31 +8,28 @@ interface KeyTopicsProps {
 
 const topics = [
   {
-    icon: "Shield",
-    title: "Skin Cancer & Mohs Surgery",
-    description: "Educational discussions and clinical insight into skin cancer diagnosis, treatment, and reconstruction.",
-    cta: "Learn More"
+    icon: "GraduationCap",
+    title: "Dermatology Education",
+    description: "Podcasts and videos focused on understanding skin conditions, treatments, and overall skin health."
+  },
+  {
+    icon: "Stethoscope",
+    title: "Clinical Expertise",
+    description: "Clinical experience in dermatology, including skin cancer treatment and Mohs surgery."
   },
   {
     icon: "Sparkles",
     title: "Cosmetic Dermatology & Surgery",
-    description: "Conversations and education around cosmetic procedures, techniques, and outcomes.",
-    cta: "Explore Cosmetic Dermatology"
-  },
-  {
-    icon: "Heart",
-    title: "General Dermatology",
-    description: "Podcasts and videos focused on common skin conditions, prevention, and overall skin health.",
-    cta: "View Educational Content"
+    description: "Cosmetic procedures and surgical techniques grounded in medical expertise."
   }
 ];
 
 export default function KeyTopics({ onNavigate }: KeyTopicsProps) {
   return (
-    <section className="py-20 lg:py-28 bg-muted/20">
+    <section className="py-20 lg:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto space-y-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light">
+        <div className="max-w-6xl mx-auto space-y-12">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-center">
             Topics We Explore
           </h2>
 
@@ -40,25 +37,17 @@ export default function KeyTopics({ onNavigate }: KeyTopicsProps) {
             {topics.map((topic, index) => (
               <div 
                 key={index} 
-                className="bg-card rounded-2xl p-8 border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 space-y-6"
+                className="bg-card rounded-2xl p-8 border border-border hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 space-y-4"
               >
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
                   <Icon name={topic.icon as any} size={28} className="text-primary" />
                 </div>
                 <div className="space-y-3">
-                  <h3 className="text-xl font-medium">{topic.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <h3 className="text-xl font-semibold">{topic.title}</h3>
+                  <p className="text-foreground/70 leading-relaxed">
                     {topic.description}
                   </p>
                 </div>
-                <Button 
-                  variant="ghost" 
-                  className="gap-2 px-0 hover:gap-3 transition-all"
-                  onClick={() => onNavigate('expertise')}
-                >
-                  {topic.cta}
-                  <Icon name="ArrowRight" size={16} />
-                </Button>
               </div>
             ))}
           </div>

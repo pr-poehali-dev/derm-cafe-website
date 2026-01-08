@@ -33,15 +33,15 @@ const featuredItems = [
 
 export default function FeaturedMedia({ onNavigate }: FeaturedMediaProps) {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="py-20 lg:py-28 bg-muted/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light">
+        <div className="max-w-6xl mx-auto space-y-12">
+          <div className="space-y-4 text-center">
+            <h2 className="text-3xl sm:text-4xl font-semibold">
               Featured Podcasts & Videos
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl">
-              Listen to recent conversations and watch educational videos covering dermatology, skin health, cosmetic procedures, and skin cancer education.
+            <p className="text-lg text-foreground/70 max-w-3xl mx-auto">
+              Explore recent conversations and videos covering dermatology, skin health, cosmetic procedures, and skin cancer education.
             </p>
           </div>
 
@@ -49,7 +49,7 @@ export default function FeaturedMedia({ onNavigate }: FeaturedMediaProps) {
             {featuredItems.map((item, index) => (
               <div 
                 key={index} 
-                className="group rounded-2xl overflow-hidden bg-card border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="group rounded-2xl overflow-hidden bg-card border border-border hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/50"
               >
                 <div className="aspect-video overflow-hidden">
                   <img 
@@ -60,22 +60,21 @@ export default function FeaturedMedia({ onNavigate }: FeaturedMediaProps) {
                 </div>
                 <div className="p-6 space-y-3">
                   <div className="flex items-center justify-between">
-                    <Badge variant="outline" className="font-normal">
+                    <Badge variant="secondary" className="font-normal">
                       {item.type}
                     </Badge>
                     <span className="text-sm text-muted-foreground">{item.duration}</span>
                   </div>
-                  <h3 className="text-xl font-medium">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
+                  <h3 className="text-xl font-semibold">{item.title}</h3>
+                  <p className="text-foreground/70 text-sm">{item.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center pt-4">
+          <div className="text-center pt-6">
             <Button 
               size="lg" 
-              variant="outline"
               onClick={() => onNavigate('media')}
               className="gap-2"
             >
