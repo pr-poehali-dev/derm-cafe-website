@@ -71,7 +71,6 @@ const portfolioCases = [
 export default function ClinicalPortfolio() {
   const [hasAcknowledged, setHasAcknowledged] = useState(false);
   const [showDialog, setShowDialog] = useState(true);
-  const [hoveredCase, setHoveredCase] = useState<number | null>(null);
 
   const handleAcknowledge = () => {
     setHasAcknowledged(true);
@@ -151,52 +150,40 @@ export default function ClinicalPortfolio() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
-          {portfolioCases.map((caseItem, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {portfolioCases.map((caseItem) => (
             <div 
               key={caseItem.id}
-              className={`
-                relative overflow-hidden rounded-2xl bg-card border border-border group
-                hover:shadow-xl transition-all duration-300
-                ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}
-                ${index === 3 ? 'lg:col-span-2' : ''}
-              `}
-              onMouseEnter={() => setHoveredCase(caseItem.id)}
-              onMouseLeave={() => setHoveredCase(null)}
+              className="bg-card border border-border rounded-2xl overflow-hidden"
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img 
-                  src={hoveredCase === caseItem.id ? caseItem.afterImage : caseItem.beforeImage}
-                  alt={caseItem.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute top-3 left-3 flex gap-2">
-                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/90 text-black backdrop-blur-sm">
-                    {hoveredCase === caseItem.id ? 'After' : 'Before'}
-                  </span>
-                  {caseItem.featured && (
-                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary/90 text-white backdrop-blur-sm">
-                      Featured
-                    </span>
-                  )}
-                </div>
-              </div>
-              
-              <div className="p-4 space-y-2">
-                <h3 className="text-lg font-semibold">{caseItem.title}</h3>
-                <div className="flex items-center gap-3 text-sm text-foreground/60">
-                  <span className="flex items-center gap-1">
-                    <Icon name="Scissors" size={14} />
+              <div className="p-6 border-b border-border">
+                <h3 className="text-xl font-semibold mb-2">{caseItem.title}</h3>
+                <div className="flex items-center gap-4 text-sm text-foreground/60">
+                  <span className="flex items-center gap-1.5">
+                    <Icon name="Scissors" size={16} />
                     {caseItem.procedure}
                   </span>
-                  <span className="flex items-center gap-1">
-                    <Icon name="MapPin" size={14} />
+                  <span className="flex items-center gap-1.5">
+                    <Icon name="MapPin" size={16} />
                     {caseItem.area}
                   </span>
                 </div>
-                <p className="text-xs text-foreground/50">
-                  Hover to see after result
-                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-0">
+                <div className="p-4 border-r border-border">
+                  <div className="text-xs font-medium text-foreground/60 mb-3">BEFORE</div>
+                  <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center">
+                    <Icon name="Image" size={48} className="text-muted-foreground/30" />
+                  </div>
+                </div>
+                
+                <div className="p-4">
+                  <div className="text-xs font-medium text-foreground/60 mb-3">AFTER</div>
+                  <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center">
+                    <Icon name="Image" size={48} className="text-muted-foreground/30" />
+                  </div>
+                </div>
               </div>
             </div>
           ))}

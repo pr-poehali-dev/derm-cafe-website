@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
@@ -42,8 +41,6 @@ const featuredCases = [
 ];
 
 export default function FeaturedCases({ onNavigate }: FeaturedCasesProps) {
-  const [hoveredCase, setHoveredCase] = useState<number | null>(null);
-
   return (
     <section className="py-20 lg:py-28 bg-muted/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,36 +54,39 @@ export default function FeaturedCases({ onNavigate }: FeaturedCasesProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {featuredCases.map((caseItem) => (
               <div 
                 key={caseItem.id}
-                className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                onMouseEnter={() => setHoveredCase(caseItem.id)}
-                onMouseLeave={() => setHoveredCase(null)}
+                className="bg-card border border-border rounded-2xl overflow-hidden"
               >
-                <div className="relative aspect-[3/4] overflow-hidden">
-                  <img 
-                    src={hoveredCase === caseItem.id ? caseItem.afterImage : caseItem.beforeImage}
-                    alt={caseItem.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/90 text-black backdrop-blur-sm">
-                      {hoveredCase === caseItem.id ? 'After' : 'Before'}
+                <div className="p-5 border-b border-border">
+                  <h3 className="text-lg font-semibold mb-1.5">{caseItem.title}</h3>
+                  <div className="flex items-center gap-3 text-sm text-foreground/60">
+                    <span className="flex items-center gap-1.5">
+                      <Icon name="Scissors" size={14} />
+                      {caseItem.procedure}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Icon name="MapPin" size={14} />
+                      {caseItem.area}
                     </span>
                   </div>
                 </div>
                 
-                <div className="p-4 space-y-2">
-                  <h3 className="text-base font-semibold line-clamp-2">{caseItem.title}</h3>
-                  <div className="flex items-center gap-2 text-xs text-foreground/60">
-                    <span className="flex items-center gap-1">
-                      <Icon name="Scissors" size={12} />
-                      {caseItem.procedure}
-                    </span>
-                    <span>•</span>
-                    <span>{caseItem.area}</span>
+                <div className="grid grid-cols-2 gap-0">
+                  <div className="p-4 border-r border-border">
+                    <div className="text-xs font-medium text-foreground/60 mb-2">BEFORE</div>
+                    <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center">
+                      <Icon name="Image" size={40} className="text-muted-foreground/30" />
+                    </div>
+                  </div>
+                  
+                  <div className="p-4">
+                    <div className="text-xs font-medium text-foreground/60 mb-2">AFTER</div>
+                    <div className="aspect-[3/4] bg-muted rounded-lg flex items-center justify-center">
+                      <Icon name="Image" size={40} className="text-muted-foreground/30" />
+                    </div>
                   </div>
                 </div>
               </div>
