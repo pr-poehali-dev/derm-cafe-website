@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { useNavigate } from 'react-router-dom';
 
 interface NavigationProps {
   onNavigate: (section: string) => void;
@@ -10,18 +11,23 @@ interface NavigationProps {
 
 export default function Navigation({ onNavigate, currentSection }: NavigationProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
 
   const menuItems = [
     { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
+    { id: 'about', label: 'About', isRoute: true },
     { id: 'media', label: 'Media Hub' },
     { id: 'expertise', label: 'Expertise' },
     { id: 'portfolio', label: 'Clinical Portfolio' },
     { id: 'contact', label: 'Contact' }
   ];
 
-  const handleNavClick = (id: string) => {
-    onNavigate(id);
+  const handleNavClick = (id: string, isRoute?: boolean) => {
+    if (isRoute) {
+      navigate(`/${id}`);
+    } else {
+      onNavigate(id);
+    }
     setMobileOpen(false);
   };
 
@@ -40,7 +46,7 @@ export default function Navigation({ onNavigate, currentSection }: NavigationPro
             {menuItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => handleNavClick(item.id)}
+                onClick={() => handleNavClick(item.id, item.isRoute)}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
                   currentSection === item.id ? 'text-primary' : 'text-muted-foreground'
                 }`}
@@ -61,7 +67,7 @@ export default function Navigation({ onNavigate, currentSection }: NavigationPro
                 {menuItems.map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => handleNavClick(item.id)}
+                    onClick={() => handleNavClick(item.id, item.isRoute)}
                     className={`text-left px-4 py-2 rounded-md transition-colors ${
                       currentSection === item.id
                         ? 'bg-accent text-accent-foreground'
