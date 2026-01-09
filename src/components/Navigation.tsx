@@ -16,6 +16,7 @@ export default function Navigation({ onNavigate, currentSection }: NavigationPro
   const menuItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About', isRoute: true },
+    { id: 'cosmetic-surgery', label: 'Cosmetic Surgery', isRoute: true },
     { id: 'media', label: 'Media Hub' },
     { id: 'expertise', label: 'Expertise' },
     { id: 'portfolio', label: 'Clinical Portfolio' },
