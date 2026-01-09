@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
@@ -14,37 +13,65 @@ import {
 } from '@/components/ui/alert-dialog';
 import Icon from '@/components/ui/icon';
 
+const portfolioCases = [
+  {
+    id: 1,
+    title: 'Basal Cell Carcinoma - Nasal',
+    beforeImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/48e34b2a-42e4-47bf-a636-e50b9c724f54.jpg',
+    afterImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/48e34b2a-42e4-47bf-a636-e50b9c724f54.jpg',
+    procedure: 'Mohs Surgery & Reconstruction',
+    area: 'Nose',
+    featured: true
+  },
+  {
+    id: 2,
+    title: 'Mohs Surgery Reconstruction',
+    beforeImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/63737b0b-4db6-4cef-a873-eb50e8b22967.jpg',
+    afterImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/63737b0b-4db6-4cef-a873-eb50e8b22967.jpg',
+    procedure: 'Surgical Reconstruction',
+    area: 'Facial',
+    featured: true
+  },
+  {
+    id: 3,
+    title: 'Melanoma Excision',
+    beforeImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/8766adbb-9096-4a2e-a29f-15c9e96a5223.jpg',
+    afterImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/8766adbb-9096-4a2e-a29f-15c9e96a5223.jpg',
+    procedure: 'Wide Local Excision',
+    area: 'Back',
+    featured: true
+  },
+  {
+    id: 4,
+    title: 'Squamous Cell Carcinoma',
+    beforeImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/2823c31b-0f73-42a8-9d92-c26477f51590.jpg',
+    afterImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/2823c31b-0f73-42a8-9d92-c26477f51590.jpg',
+    procedure: 'Mohs Surgery',
+    area: 'Ear',
+    featured: true
+  },
+  {
+    id: 5,
+    title: 'Forehead Reconstruction',
+    beforeImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/636b51d9-2cc9-4ac8-8b39-6c71f46676de.jpg',
+    afterImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/636b51d9-2cc9-4ac8-8b39-6c71f46676de.jpg',
+    procedure: 'Flap Reconstruction',
+    area: 'Forehead'
+  },
+  {
+    id: 6,
+    title: 'Cheek Lesion Removal',
+    beforeImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/00653f05-aa9d-4ab9-be68-41415fb2c1e6.jpg',
+    afterImage: 'https://cdn.poehali.dev/projects/5be91477-fe81-410a-afd4-96d3a7b8026b/files/00653f05-aa9d-4ab9-be68-41415fb2c1e6.jpg',
+    procedure: 'Excision & Closure',
+    area: 'Cheek'
+  }
+];
+
 export default function ClinicalPortfolio() {
   const [hasAcknowledged, setHasAcknowledged] = useState(false);
   const [showDialog, setShowDialog] = useState(true);
-
-  const portfolioSections = [
-    {
-      title: 'Basal Cell Carcinoma',
-      description: 'Case studies and outcomes for the most common type of skin cancer.',
-      cases: 12
-    },
-    {
-      title: 'Squamous Cell Carcinoma',
-      description: 'Treatment results for the second most common skin cancer.',
-      cases: 8
-    },
-    {
-      title: 'Malignant Melanoma',
-      description: 'Diagnosis and treatment outcomes for the most serious skin cancer.',
-      cases: 6
-    },
-    {
-      title: 'Mohs Surgery & Reconstruction',
-      description: 'Surgical procedures and reconstruction techniques with patient outcomes.',
-      cases: 15
-    },
-    {
-      title: 'Before & After Gallery',
-      description: 'Comprehensive visual documentation of treatment results.',
-      cases: 24
-    }
-  ];
+  const [hoveredCase, setHoveredCase] = useState<number | null>(null);
 
   const handleAcknowledge = () => {
     setHasAcknowledged(true);
@@ -105,7 +132,7 @@ export default function ClinicalPortfolio() {
   }
 
   return (
-    <section className="py-16">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <Alert className="border-amber-200 bg-amber-50 mb-8">
@@ -117,70 +144,82 @@ export default function ClinicalPortfolio() {
             </AlertDescription>
           </Alert>
 
-          <h2 className="text-3xl font-medium mb-4">Clinical Portfolio</h2>
-          <p className="text-muted-foreground max-w-2xl">
+          <h2 className="text-3xl font-semibold mb-4">Clinical Portfolio</h2>
+          <p className="text-foreground/70 max-w-2xl">
             Documented cases demonstrating treatment outcomes across various dermatological conditions 
-            and procedures.
+            and surgical procedures.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {portfolioSections.map((section, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="text-xl">{section.title}</CardTitle>
-                <CardDescription className="serif-text">{section.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Available Cases:</span>
-                  <Badge className="bg-primary/10 text-primary">{section.cases}</Badge>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+          {portfolioCases.map((caseItem, index) => (
+            <div 
+              key={caseItem.id}
+              className={`
+                relative overflow-hidden rounded-2xl bg-card border border-border group
+                hover:shadow-xl transition-all duration-300
+                ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}
+                ${index === 3 ? 'lg:col-span-2' : ''}
+              `}
+              onMouseEnter={() => setHoveredCase(caseItem.id)}
+              onMouseLeave={() => setHoveredCase(null)}
+            >
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img 
+                  src={hoveredCase === caseItem.id ? caseItem.afterImage : caseItem.beforeImage}
+                  alt={caseItem.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute top-3 left-3 flex gap-2">
+                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/90 text-black backdrop-blur-sm">
+                    {hoveredCase === caseItem.id ? 'After' : 'Before'}
+                  </span>
+                  {caseItem.featured && (
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary/90 text-white backdrop-blur-sm">
+                      Featured
+                    </span>
+                  )}
                 </div>
-                <div className="bg-muted/30 p-4 rounded-lg">
-                  <p className="text-sm text-muted-foreground">
-                    Content from existing page: Clinical images, case descriptions, 
-                    treatment approaches, and outcomes.
-                  </p>
+              </div>
+              
+              <div className="p-4 space-y-2">
+                <h3 className="text-lg font-semibold">{caseItem.title}</h3>
+                <div className="flex items-center gap-3 text-sm text-foreground/60">
+                  <span className="flex items-center gap-1">
+                    <Icon name="Scissors" size={14} />
+                    {caseItem.procedure}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Icon name="MapPin" size={14} />
+                    {caseItem.area}
+                  </span>
                 </div>
-                <Button variant="outline" className="w-full gap-2">
-                  View Cases
-                  <Icon name="ArrowRight" size={16} />
-                </Button>
-              </CardContent>
-            </Card>
+                <p className="text-xs text-foreground/50">
+                  Hover to see after result
+                </p>
+              </div>
+            </div>
           ))}
         </div>
 
-        <div className="mt-12">
-          <Card className="bg-muted/30">
-            <CardHeader>
-              <CardTitle>About This Portfolio</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-sm text-muted-foreground serif-text">
-              <p>
-                This clinical portfolio demonstrates treatment outcomes across a range of dermatological 
-                conditions, with particular focus on skin cancer treatment and surgical reconstruction.
-              </p>
-              <p>
-                All cases are presented with patient consent and are intended for educational purposes 
-                to help patients understand treatment options and expected outcomes.
-              </p>
-              <p>
-                Individual results may vary. These cases represent actual patient outcomes but should 
-                not be considered a guarantee of results for any individual patient.
-              </p>
-            </CardContent>
-          </Card>
+        <div className="mt-12 max-w-3xl mx-auto">
+          <div className="bg-muted/30 rounded-2xl p-6 space-y-3 text-sm text-foreground/70">
+            <p className="font-medium text-foreground">About This Portfolio</p>
+            <p>
+              This clinical portfolio demonstrates treatment outcomes across a range of dermatological 
+              conditions, with particular focus on skin cancer treatment and surgical reconstruction.
+            </p>
+            <p>
+              All cases are presented with patient consent and are intended for educational purposes 
+              to help patients understand treatment options and expected outcomes.
+            </p>
+            <p>
+              Individual results may vary. These cases represent actual patient outcomes but should 
+              not be considered a guarantee of results for any individual patient.
+            </p>
+          </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function Badge({ children, className }: { children: React.ReactNode; className?: string }) {
-  return (
-    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${className}`}>
-      {children}
-    </span>
   );
 }

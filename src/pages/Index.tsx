@@ -6,6 +6,7 @@ import WhatIsDermCafe from '@/components/sections/WhatIsDermCafe';
 import FeaturedMedia from '@/components/sections/FeaturedMedia';
 import KeyTopics from '@/components/sections/KeyTopics';
 import AboutDoctor from '@/components/sections/AboutDoctor';
+import FeaturedCases from '@/components/sections/FeaturedCases';
 import SeeTheDifference from '@/components/sections/SeeTheDifference';
 import Disclaimer from '@/components/sections/Disclaimer';
 import AskEngage from '@/components/sections/AskEngage';
@@ -32,6 +33,7 @@ export default function Index() {
             <FeaturedMedia onNavigate={setCurrentSection} />
             <KeyTopics onNavigate={setCurrentSection} />
             <AboutDoctor onNavigate={setCurrentSection} />
+            <FeaturedCases onNavigate={setCurrentSection} />
             <SeeTheDifference onNavigate={setCurrentSection} />
             <Disclaimer />
             <AskEngage onNavigate={setCurrentSection} />
@@ -55,6 +57,7 @@ export default function Index() {
             <FeaturedMedia onNavigate={setCurrentSection} />
             <KeyTopics onNavigate={setCurrentSection} />
             <AboutDoctor onNavigate={setCurrentSection} />
+            <FeaturedCases onNavigate={setCurrentSection} />
             <SeeTheDifference onNavigate={setCurrentSection} />
             <Disclaimer />
             <AskEngage onNavigate={setCurrentSection} />
